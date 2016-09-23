@@ -1,0 +1,33 @@
+In the base code provided, the user manipulates a blue point (by teleporting, when the mouse is pressed).
+Its location is represented by the variables (x,y).
+Write code that keeps the last 30 of such locations and 
+processes them (for example by averaging) to display a trail behind the blue point.
+Implement a trail class, its internal variables to store some 30 points, 3 methods 
+for updating the trail with a new location, and a method for displaying the trails.
+An accompanying video illustrates 2 techniques:
+ - update the list of the last 30 locations as a FIFO
+ - have each point in the list move half-way towards the newer point 
+Implement these two and add a third one of your design that is better
+at showing the instantaneous velocity and acceleration of the blue point.
+Post a zip file with
+ - Your code (make sure that it has your names, title, date, pictures, menus)
+ - 3 videos showing the 3 modes
+ - a short write up (PDF) with title, names, pictures of authors, problem statement, math/algorithm for the 3 solutions, an image for each, and a qualitative comparison of the pros and cons of each.
+ 
+Details
+Make a new tab called "trail"
+In there, make a class TRAIL with methods
+ drag(x,y); // where each point moves half way to the previous one
+ push(x,y); // a simple fifo
+ show(x,y); // the display of the whole trail
+Declare a TRAIL T.
+ 
+In the P01 tab add:
+Boolean drag=false;
+ 
+In draw, add:
+    if(drag) T.drag(x,y); else T.push(x,y);
+    T.show();
+ 
+in keypressed, add:
+  if(key=='d') drag=!drag; // toggle mode
